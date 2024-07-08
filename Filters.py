@@ -49,10 +49,11 @@ def apply_sharpen_filter(frame):
                        [-1, -1, -1]])
     return cv2.filter2D(frame, -1, kernel)
 
-cap = cv2.VideoCapture(0)
+# Use the IP camera stream
+cap = cv2.VideoCapture('http://192.168.0.104:8080/video')
 
 if not cap.isOpened():
-    print("Error opening webcam")
+    print("Error opening IP camera stream")
     exit()
 
 # Get the screen resolution
@@ -73,7 +74,7 @@ while True:
     ret, frame = cap.read()
 
     if not ret:
-        print("Error reading frame")
+        print("Error reading frame from IP camera")
         break
 
     kernel_size = (5, 5)
