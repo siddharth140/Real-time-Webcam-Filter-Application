@@ -56,10 +56,15 @@ if not cap.isOpened():
     print("Error opening IP camera stream")
     exit()
 
+# Set camera properties for better clarity (if supported by your camera)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+cap.set(cv2.CAP_PROP_BRIGHTNESS, 150)
+cap.set(cv2.CAP_PROP_CONTRAST, 150)
+
 # Get the screen resolution
 screen_width = 1920  # Adjust this to your screen width
 screen_height = 1080  # Adjust this to your screen height
-
 # Define the reduction factor
 reduction_factor = 0.7
 
